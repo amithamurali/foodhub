@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2016 10:03:32 AM by Hibernate Tools 5.1.0.CR1 -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.RestaurantOrder" table="restaurant_order" catalog="restaurant_review" optimistic-lock="version">
+        <id name="orderId" type="java.lang.Integer">
+            <column name="order_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="menuItemsByMenuItem2" class="neu.edu.entity.MenuItems" fetch="select">
+            <column name="menu_item2" />
+        </many-to-one>
+        <many-to-one name="menuItemsByMenuItem3" class="neu.edu.entity.MenuItems" fetch="select">
+            <column name="menu_item3" />
+        </many-to-one>
+        <many-to-one name="menuItemsByMenuItem1" class="neu.edu.entity.MenuItems" fetch="select">
+            <column name="menu_item1" />
+        </many-to-one>
+        <many-to-one name="restaurant" class="neu.edu.entity.Restaurant" fetch="select">
+            <column name="order_restaurant_id" />
+        </many-to-one>
+        <many-to-one name="user" class="neu.edu.entity.User" fetch="select">
+            <column name="order_user_id" />
+        </many-to-one>
+        <property name="amount" type="string">
+            <column name="amount" length="20" />
+        </property>
+        <property name="orderDate" type="date">
+            <column name="order_date" length="10" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="50" />
+        </property>
+        <property name="paymentType" type="string">
+            <column name="payment_type" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

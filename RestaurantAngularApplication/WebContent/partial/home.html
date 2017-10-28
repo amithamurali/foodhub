@@ -1,0 +1,36 @@
+ <p>
+ 	<a ng-show="userSession.role == 'Owner'" ng-click="addRestaurant()"  class="btn btn-primary">
+ 	Add New Restaurant</a></p>
+<p>
+ 	<a ng-show="userSession.role == 'Admin'" ng-click="GenerateCharts()"  class="btn btn-primary">
+ 	Reports</a></p>
+<div class="page-header" ng-init="init()">
+	<div ng-show="{{error}}">
+		{{message}}
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tr class="table-heading" width="">
+				<th>Name</th>
+				<th>Location</th>
+				<th>Phone Number</th>
+				<th>Price</th>
+				<th>Operation</th>
+			</tr>
+			<tr ng-repeat="restaurant in restaurants">
+				<td>{{restaurant.restaurantName}}</td>
+				<td>{{restaurant.location}}</td>
+				<td>{{restaurant.phoneNumber}}</td>
+				<td>{{restaurant.price}}</td>
+				<td><a ng-click="viewRestaurant(restaurant.restaurantId)"
+					class="btn btn-primary"> View Restaurant</a></td>
+				<td><a ng-show="userSession.role == 'Owner'" ng-click="editRestaurant(restaurant.restaurantId)"
+					class="btn btn-primary"> Update Restaurant</a>
+					<!-- <a href="#/" ng-show="userSession.role == 'Owner'">Update Restaurant</a> -->
+					<a ng-show="userSession.role == 'Admin'" ng-click="disableRestaurant(restaurant.restaurantId)"
+					class="btn btn-primary"> Disable Restaurant</a></td>
+					
+			</tr>
+		</table>
+	</div>
+</div>

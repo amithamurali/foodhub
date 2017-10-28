@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2016 10:03:32 AM by Hibernate Tools 5.1.0.CR1 -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.MenuItems" table="menu_items" catalog="restaurant_review" optimistic-lock="version">
+        <id name="menuItemsId" type="java.lang.Integer">
+            <column name="menu_items_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="restaurant" class="neu.edu.entity.Restaurant" fetch="select">
+            <column name="menu_items_restaurant_id" />
+        </many-to-one>
+        <property name="itemName" type="string">
+            <column name="item_name" length="50" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="50" />
+        </property>
+        <property name="price" type="string">
+            <column name="price" length="50" />
+        </property>
+        <property name="category" type="string">
+            <column name="category" length="50" />
+        </property>
+        <set name="restaurantOrdersForMenuItem2" table="restaurant_order" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="menu_item2" />
+            </key>
+            <one-to-many class="neu.edu.entity.RestaurantOrder" />
+        </set>
+        <set name="restaurantOrdersForMenuItem3" table="restaurant_order" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="menu_item3" />
+            </key>
+            <one-to-many class="neu.edu.entity.RestaurantOrder" />
+        </set>
+        <set name="restaurantOrdersForMenuItem1" table="restaurant_order" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="menu_item1" />
+            </key>
+            <one-to-many class="neu.edu.entity.RestaurantOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

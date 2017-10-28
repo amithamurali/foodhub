@@ -1,0 +1,68 @@
+<form class='form-horizontal' role='form'>
+<div class="form-group">
+	<label for="name" class="col-md-3 control-label">Restaurant Name*</label>
+	<div class="col-md-9">
+		<input type="text" ng-model="addRestCtrl.restaurant.restaurantName" class="form-control"
+			id="name" placeholder="Restaurant Name" required/>
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="location" class="col-md-3 control-label">Location*</label>
+	<div class="col-md-9">
+		<input type="text" ng-model="addRestCtrl.restaurant.location" class="form-control"
+			id="location" placeholder="Location" required/>
+	</div>
+</div>
+
+
+<div class="form-group">
+	<label for="cuisine" class="col-md-3 control-label">Cuisine*</label>
+	<div class="col-md-9">
+		<!-- <input type="text" ng-model="addRestCtrl.restaurant.cuisuine" class="form-control"
+			id="cuisine" placeholder="Cuisine" required/> -->
+			<select class='form-control' id='id_cuisine'
+									ng-model="addRestCtrl.restaurant.cuisuine" required>
+									<option>Indian</option>
+									<option>Chinese</option>
+									<option>Continental</option>
+									<option>Mexican</option>
+									<option>American</option>
+								</select>
+	</div>
+</div>
+
+
+<div class="form-group">
+	<label for="price" class="col-md-3 control-label">Price*</label>
+	<div class="col-md-9">
+	<select class='form-control' id='id_price'
+									ng-model="addRestCtrl.restaurant.price" required>
+									<option>$$$</option>
+									<option>$$</option>
+									<option>$</option>
+								</select>
+		<!-- <input type="text" ng-model="addRestCtrl.restaurant.price" class="form-control"
+			id="price" placeholder="$$$" required/> -->
+	</div>
+</div>
+
+
+<div class="form-group">
+<label for="phoneNumber" class="col-md-3 control-label">PhoneNumber*</label>
+	<div class="col-md-9">
+		<input type="number" required ng-model="addRestCtrl.restaurant.phoneNumber" class="form-control"
+			id="phoneNumber" placeholder="xxx-xxx-xxxx"  maxlength='13' pattern='{10,13}' title='Please enter valid phone number'/>
+	</div>
+</div>
+
+
+<div class="form-group">
+	<div class="col-md-offset-5 col-md-1"  style="padding-top: 20px;">
+		<input type="submit" class="btn btn-primary" value="Back" ng-click="back()" />
+	</div>
+	<div class="col-md-1"  style="padding-left: 40px;padding-top: 20px;">
+		<input type="submit" class="btn btn-primary" value="Save" ng-click="addRestCtrl.save()"/>
+	</div>
+</div>
+</form>

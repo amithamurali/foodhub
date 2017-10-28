@@ -1,0 +1,45 @@
+
+<header>
+	<nav class="navbar navbar-default">`
+		<div class="container" style="background-color:#0066CC">
+			<div class="navbar-header">
+				<h4 style="color:#FFFFFF">{{'Welcome '+userSession.username}}</h4>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+			    <li><a href="#dashboard" style="color:#FFFFFF"><i class="fa fa-shield"></i> Home</a></li>
+				<li><a href="#/menu/{{restID}}" style="color:#FFFFFF"><i class="fa fa-shield"></i> Menu</a></li>
+				<li><a href="#/about/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>About</a></li>
+				<li><a href="#/reviews/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>Reviews</a></li>
+
+			</ul>
+		</div>
+	</nav>
+</header>
+<div class="container" ><p>
+ 	<a ng-show="userSession.role == 'Owner'" ng-click="addMenuItem()"  class="btn btn-primary">
+ 	Add New Menu Item</a></p>
+ 	
+<div class="page-header" ng-init="init()">
+	<div ng-show="{{error}}">
+		{{message}}
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tr class="table-heading">
+				<th>ItemName</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Price</th>
+			</tr>
+			<tr ng-repeat="menuItem in menuItems">
+				<td>{{menuItem.itemName}}</td>
+				<td>{{menuItem.description}}</td>
+				<td>{{menuItem.category}}</td>
+				<td>{{menuItem.price}}</td>
+				<td><a ng-show="userSession.role == 'Owner'" ng-click="deleteMenuItem(menuItem.menuItemsId)"
+					class="btn btn-primary"> Delete</a>
+		</table>
+	</div>
+</div>
+</div>

@@ -1,0 +1,52 @@
+<header>
+	<nav class="navbar navbar-default">`
+		<div class="container" style="background-color:#0066CC">
+			<div class="navbar-header">
+				<h4 style="color:#FFFFFF">{{'Welcome '+userSession.username}}</h4>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+			    <li><a href="#dashboard" style="color:#FFFFFF"><i class="fa fa-shield"></i> Home</a></li>
+				<li><a href="#/menu/{{restID}}" style="color:#FFFFFF"><i class="fa fa-shield"></i> Menu</a></li>
+				<li><a href="#/about/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>About</a></li>
+				<li><a href="#/reviews/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>Reviews</a></li>
+
+			</ul>
+		</div>
+	</nav>
+</header>
+ <p>
+ <input ng-show="userSession.role == 'Customer'" class='form-control' id='id_new_review'	ng-model="newreview"
+									placeholder='Type here....' type='text'>
+ 	<a ng-show="userSession.role == 'Customer'" ng-click="addReview()"  class="btn btn-primary">
+ 	Write us a review</a></p>
+ 	
+ 	
+<div class="page-header" ng-init="init()">
+	<div ng-show="{{error}}">
+		{{message}}
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<tr class="table-heading">
+				<th>Customer Reviews</th>
+			</tr>
+			<tr ng-repeat="review in reviewsandreplies">
+				<td width="80%"><h4>{{review.user.fullName}}</h4>
+				<h5 style="color:#696969"><br />{{'posted on ' + review.reviewDate}}</h5>
+				{{review.comments}}
+				
+				<ul style="font-style: Italic; " ng-repeat="reply in review.reviewReply">
+					   Restaurant Staff reply :<br /><h5 style="color:#696969">{{'posted on' + reply.reviewDate}}</h5>
+					   {{reply.comments}}
+					
+				</ul>
+				</td>
+				<td><input ng-show="userSession.role == 'Owner'" class='form-control' id='id_new_reply'	ng-model="reviewCtrl.newreply.comments"
+									placeholder='write a reply' type='text' />
+				<a ng-show="userSession.role == 'Owner'" ng-click="reviewCtrl.addReply(review.reviewId)"
+					class="btn btn-primary">Reply</a></td>
+					</tr>
+			</table>
+	</div>
+</div>

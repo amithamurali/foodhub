@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2016 10:03:32 AM by Hibernate Tools 5.1.0.CR1 -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.Review" table="review" catalog="restaurant_review" optimistic-lock="version">
+        <id name="reviewId" type="java.lang.Integer">
+            <column name="review_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="restaurant" class="neu.edu.entity.Restaurant" fetch="select">
+            <column name="review_restaurant_id" />
+        </many-to-one>
+        <many-to-one name="user" class="neu.edu.entity.User" fetch="select">
+            <column name="review_user_id" />
+        </many-to-one>
+        <property name="comments" type="string">
+            <column name="comments" length="50" />
+        </property>
+        <property name="reviewDate" type="timestamp">
+            <column name="review_date" length="19" />
+        </property>
+        <set name="reviewReplies" table="review_reply" inverse="true" lazy="false" fetch="select" cascade="delete">
+            <key>
+                <column name="reply_review_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.ReviewReply" />
+        </set>
+    </class>
+</hibernate-mapping>

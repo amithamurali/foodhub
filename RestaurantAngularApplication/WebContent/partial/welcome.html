@@ -1,0 +1,17 @@
+<div class="container" style="color:#FFFFFF">
+	Welcome to Food Hub App, in this app you can search for restaurants of your choice and order food online.
+
+	Restaurants for you !!!
+	<div class="page-header" ng-init="init()">
+			<div class="table-responsive">
+		<table>
+			<tr ng-repeat="restaurant in restaurants">
+				<td>{{restaurant.restaurantName}}</td>
+				<td>{{restaurant.location}}</td>					
+			</tr>
+		</table>
+	</div>
+	</div>
+	
+	<h6>Please log in to view further details and contacts at the restaurants.</h6>
+</div>

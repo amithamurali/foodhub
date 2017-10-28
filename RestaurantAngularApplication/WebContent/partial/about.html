@@ -1,0 +1,32 @@
+<header>
+	<nav class="navbar navbar-default">
+		`
+		<div class="container" style="background-color:#0066CC">
+			<div class="navbar-header">
+				<h4 style="color:#FFFFFF">{{'Welcome '+userSession.username}}</h4>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+			    <li><a href="#dashboard" style="color:#FFFFFF"><i class="fa fa-shield"></i> Home</a></li>
+				<li><a href="#/menu/{{restID}}" style="color:#FFFFFF"><i class="fa fa-shield"></i> Menu</a></li>
+				<li><a href="#/about/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>About</a></li>
+				<li><a href="#/reviews/{{restID}}" style="color:#FFFFFF"><i class="fa fa-comment"></i>Reviews</a></li>
+
+			</ul>
+		</div>
+	</nav>
+</header>
+<div class="page-header" ng-init="init()">
+	<div ng-show="{{error}}">
+		{{message}}
+	</div>
+	<div style="font-style: italic;">
+<h2>Restaurant Information</h2>
+<label class='control-label col-md-11' for='restaurantName'>{{'Restaurant Name : ' + restaurantDetails.restaurantName}}</label>
+<label class='control-label col-md-11' for='location'>{{'Our Location : ' + restaurantDetails.location}}</label>
+<label class='control-label col-md-11' for='cuisine'>{{'Cuisine : ' + restaurantDetails.cuisine}}</label>
+<label class='control-label col-md-11' for='phoneNumber'>{{'Phone Number : ' + restaurantDetails.phoneNumber}}</label>
+<label class='control-label col-md-11' for='price'>{{'Price Range : ' + restaurantDetails.price}}</label>
+</div>
+
+</div>

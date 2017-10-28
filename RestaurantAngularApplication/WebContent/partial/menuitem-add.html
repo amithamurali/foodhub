@@ -1,0 +1,50 @@
+<form class='form-horizontal' role='form'>
+<div class="form-group">
+	<label for="name" class="col-md-2 control-label">Item Name*</label>
+	<div class="col-md-10">
+		<input type="text" ng-model="addmenuCtrl.menuitem.itemName" class="form-control"
+			id="name" placeholder="Item Name" required />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="description" class="col-md-2 control-label">Description</label>
+	<div class="col-md-10">
+		<input type="text" ng-model="addmenuCtrl.menuitem.description" class="form-control"
+			id="description" placeholder="Description" />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="price" class="col-md-2 control-label">Price*</label>
+	<div class="col-md-10">
+		<input type="number" ng-model="addmenuCtrl.menuitem.price" class="form-control"
+			id="price" placeholder="$$$" required />
+	</div>
+</div>
+
+<div class="form-group">
+	<label for="category" class="col-md-2 control-label">Category*</label>
+	<div class="col-md-10">
+		<select class='form-control' id='id_category'
+									ng-model="addmenuCtrl.menuitem.category" required>
+									<option>Appetizer</option>
+									<option>Entree</option>
+									<option>Dessert</option>
+									<option>Beverage</option>
+								</select>
+	</div>
+</div>
+
+
+<div class="form-group">
+	
+	<div class="col-md-1"  style="padding-top: 20px;">
+		<input type="submit" class="btn btn-primary" value="Save" ng-click="addmenuCtrl.save()"/>
+	</div>
+</div>
+</form>
+
+<div class="col-md-offset-5 col-md-1"  style="padding-top: 20px;">
+		<input type="submit" class="btn btn-primary" value="Back" ng-click="addmenuCtrl.back()" />
+	</div>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 8, 2016 10:03:32 AM by Hibernate Tools 5.1.0.CR1 -->
+<hibernate-mapping>
+    <class name="neu.edu.entity.User" table="user" catalog="restaurant_review" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="USER_NAME" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="50" />
+        </property>
+        <property name="age" type="timestamp">
+            <column name="AGE" length="19" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="50" />
+        </property>
+        <property name="fullName" type="string">
+            <column name="Full_NAME" length="50" not-null="true" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="PHONE_NUMBER" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="50" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="50" not-null="true" />
+        </property>        
+        <property name="userType" type="string">
+            <column name="USER_TYPE" length="50" not-null="true" />
+        </property>
+        <set name="restaurantOrders" table="restaurant_order" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="order_user_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.RestaurantOrder" />
+        </set>
+        <set name="reviews" table="review" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="review_user_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.Review" />
+        </set>
+        <set name="reviewReplies" table="review_reply" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="reply_user_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.ReviewReply" />
+        </set>
+        <set name="userPaymentDetailses" table="user_payment_details" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="user_payment_details_user_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.UserPaymentDetails" />
+        </set>
+        <set name="restaurants" table="restaurant" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="restaurant_user_id" />
+            </key>
+            <one-to-many class="neu.edu.entity.Restaurant" />
+        </set>
+    </class>
+</hibernate-mapping>
